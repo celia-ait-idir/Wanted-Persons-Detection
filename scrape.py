@@ -38,7 +38,7 @@ def insert_individual(ind):
     
     data = {
     "DATAID": ind.findtext("DATAID"),
-    "VERSIONNUM": ind.findtext("VERSIONNUM") or 0,  # default to 0 if missing
+    "VERSIONNUM": ind.findtext("VERSIONNUM") or 0, 
     "FIRST_NAME": ind.findtext("FIRST_NAME"),
     "SECOND_NAME": ind.findtext("SECOND_NAME"),
     "THIRD_NAME": ind.findtext("THIRD_NAME"),
@@ -178,7 +178,6 @@ def insert_last_day_updated(ind):
         insert_table(query, data)
 def insert_nationality(ind):
     for nat in ind.findall("NATIONALITY"):
-        # Look for VALUE sub-element within NATIONALITY
         value_elem = nat.find("VALUE")
         if value_elem is None or not value_elem.text or not value_elem.text.strip():
             continue
@@ -193,8 +192,6 @@ def insert_nationality(ind):
             ON DUPLICATE KEY UPDATE
                 VALUE = VALUES(VALUE)
         """
-        print("///////////////////////hgj")
-        print(data)
         insert_table(query, data)
 
         
@@ -230,3 +227,4 @@ conn.close()
 
 
 print("XML data successfully imported into MySQL!")
+
