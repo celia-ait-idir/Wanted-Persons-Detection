@@ -10,7 +10,7 @@ root = tree.getroot()
 conn = mysql.connector.connect(
     host='localhost',
     user='root', #personal
-    password='celiaabts2004', #personal
+    password='', #personal
     database='si_ref_dev' #database name
 )
 cursor = conn.cursor()
@@ -227,5 +227,6 @@ for ind in root.findall(".//INDIVIDUAL"):
         
 cursor.close()
 conn.close()
+
 
 print("XML data successfully imported into MySQL!")
