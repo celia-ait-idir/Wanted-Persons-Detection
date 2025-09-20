@@ -8,14 +8,8 @@ from rapidfuzz import fuzz
 import pycountry
 from sqlalchemy import create_engine
 
-conn = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="celiaabts2004",
-    database="si_ref_dev"
-)
 
-conn = create_engine("mysql+mysqlconnector://root:celiaabts2004@localhost/si_ref_dev")
+conn = create_engine("mysql+mysqlconnector://root:.....") # personal settings
 
 #querrrries
 querry_name = "SELECT DATAID, Concat_ws(' ',`FIRST_NAME`,`SECOND_NAME`,`THIRD_NAME`) as FULL_NAME FROM `onu_individual` "
@@ -195,5 +189,6 @@ data['all_names'] = data.apply(add_names, axis =1)
 print(data.sample(5))
 print(len(data))
 print(data.columns)
+
 
 data.to_csv("onu.csv", index=False)
